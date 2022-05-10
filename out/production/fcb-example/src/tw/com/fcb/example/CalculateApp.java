@@ -1,6 +1,10 @@
 package  tw.com.fcb.example;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 public class CalculateApp{
@@ -178,6 +182,7 @@ public class CalculateApp{
 //        System.out.println("number2 = " + son.getNumber2());
 //        System.out.println("number3 = " + son.number3);
 //        son.show2();
+//        son.showMessage();
 
 //        ------------------------------------------------------------
 //        example 12
@@ -460,36 +465,77 @@ public class CalculateApp{
 //                "\"rate\":\"28\"," +
 //                "\"amountB\":\"1000\"";
 //
-        String[] dataArr = {
-                "86483666,KAI,28.00000,1000.00",
-                "05052322,SUSU,28.12345,8888",
-                "A234567893,LALA,27.56789,7788"
-        };
-        CommonAreaService commonAreaService = new CommonAreaService();
-
-        for(String data : dataArr) {
-            String[] tokens = data.split(":|,");
-
-            CommonArea commonArea = new CommonArea();
-            commonArea.setId(tokens[0]);
-            commonArea.setName(tokens[1]);
-            commonArea.setRate(new BigDecimal(tokens[2]));
-            commonArea.setAmountB(new BigDecimal(tokens[3]));
-            commonAreaService.addList(commonArea);
-        }
-
-        commonAreaService.showList();
-        System.out.println("---------------------------");
-        List<CommonArea> getList = commonAreaService.getLists();
-        for(int i = 0 ; i < getList.size() ; i++){
-            System.out.println(getList.get(i).toString());
-        }
+//        String[] dataArr = {
+//                "86483666,KAI,28.00000,1000.00",
+//                "05052322,SUSU,28.12345,8888",
+//                "A234567893,LALA,27.56789,7788"
+//        };
+//        CommonAreaService commonAreaService = new CommonAreaService();
+//
+//        for(String data : dataArr) {
+//            String[] tokens = data.split(":|,");
+//
+//            CommonArea commonArea = new CommonArea();
+//            commonArea.setId(tokens[0]);
+//            commonArea.setName(tokens[1]);
+//            commonArea.setRate(new BigDecimal(tokens[2]));
+//            commonArea.setAmountB(new BigDecimal(tokens[3]));
+//            commonAreaService.addList(commonArea);
+//        }
+//
+//        commonAreaService.showList();
+//        System.out.println("---------------------------");
+//        List<CommonArea> getList = commonAreaService.getLists();
+//        for(int i = 0 ; i < getList.size() ; i++){
+//            System.out.println(getList.get(i).toString());
+//        }
 
 //        ------------------------------------------------------------
 //        example 27
+//        System.out.println(LocalDateTime.now());
+//        System.out.println(LocalDate.now());
+//        System.out.println(LocalTime.now());
+//        System.out.println("-------------------------------------------");
+//
+//        var date = LocalDate.of(2022, 05, 11);
+//        var formatterDate = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(date);
+//        System.out.println(date);
+//        System.out.println(formatterDate);
+//
+//        var time = LocalTime.of(14, 50, 40);
+//        var formatterTime1 =  DateTimeFormatter.ofPattern("HH:mm:ss").format(time);
+//        var formatterTime2 =  DateTimeFormatter.ofPattern("hh:mm:ss").format(time);
+//        System.out.println(time);
+//        System.out.println(formatterTime1);
+//        System.out.println(formatterTime2);
+//        System.out.println("-------------------------------------------");
+//
+//        String formatDate = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(LocalDate.now());
+//        System.out.println(formatDate);
+//
+//        String formatTime = DateTimeFormatter.ofPattern("HH:mm:ss").format(LocalTime.now());
+//        System.out.println(formatTime);
+//        System.out.println("-------------------------------------------");
 
 //        ------------------------------------------------------------
 //        example 28
+        System.out.println(Currency.USD);
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter the currency: ");
+        String currStr = scanner.next();
+        for(Currency currency : Currency.values()) {
+            if(currStr.equals(currency.name())){
+                System.out.println(currency);
+            }
+            else{
+                System.out.println(currency + " Not Exist");
+            }
+        }
+
+//        for(Currency currency : Currency.values()){
+//            System.out.println(currency + " : " + currency.getCode());
+//        }
 
 //        ------------------------------------------------------------
 //        example 29

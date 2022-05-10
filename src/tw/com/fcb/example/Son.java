@@ -14,13 +14,22 @@ class Father{
     }
 
     private void show(){
-        System.out.println("xxx");
+        System.out.println("I'm father");
     }
 
     public void show2(){
         show();
     }
+
+    public void showMessage(){
+        System.out.println("I'm father");
+    }
 }
 
 public class Son extends Father{
+    @Override
+    public void showMessage() {
+        super.showMessage();
+        System.out.println("I'm Son");
+    }
 }
