@@ -1,11 +1,15 @@
 package  tw.com.fcb.example;
 
+import java.io.*;
 import java.math.BigDecimal;
+import java.nio.Buffer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class CalculateApp{
     public static void main(String[] args){
@@ -519,29 +523,98 @@ public class CalculateApp{
 
 //        ------------------------------------------------------------
 //        example 28
-        System.out.println(Currency.USD);
+//        System.out.println(Currency.USD);
+//
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter the currency: ");
+//        String currStr = scanner.next();
+//        for(Currency currency : Currency.values()) {
+//            if(currStr.equals(currency.name())){
+//                System.out.println(currency);
+//            }
+//            else{
+//                System.out.println(currency + " Not Exist");
+//            }
+//        }
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the currency: ");
-        String currStr = scanner.next();
-        for(Currency currency : Currency.values()) {
-            if(currStr.equals(currency.name())){
-                System.out.println(currency);
-            }
-            else{
-                System.out.println(currency + " Not Exist");
-            }
-        }
-
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter the currency: ");
+//        String currencyCode = scanner.next();
 //        for(Currency currency : Currency.values()){
-//            System.out.println(currency + " : " + currency.getCode());
+//            System.out.println(currency + " : " + currency.getCurrencyCode());
+//            if(currencyCode.equals(currency.getCurrencyCode())){
+//                System.out.println(currency + " Found!! ");
+//            }
+//            else{
+//                System.out.println(currency + " Not found!! ");
+//            }
 //        }
 
 //        ------------------------------------------------------------
 //        example 29
+//        try {
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.print("Enter the file-name: ");
+//            String fileName = scanner.next();
+//            File file = new File(fileName);
+//
+//            do{
+//                System.out.print("Enter the data: ");
+//                String data = scanner.next();
+//
+//                if(data.equals("quit")) {
+//                    break;
+//                }
+//                else {
+//                    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
+//                    bufferedWriter.write(data);
+//                    bufferedWriter.newLine();
+//                    bufferedWriter.close();
+//                }
+//            }while (true);
+//        }
+//        catch(IOException e) {
+//            e.printStackTrace();
+//        }
+
+//        try {
+//            Scanner scanner = new Scanner(System.in);
+//            System.out.print("Enter the file-name: ");
+//            String fileName = scanner.next();
+//            File file = new File(fileName);
+//
+//            BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+//            String line = null;
+//            while((line = bufferedReader.readLine()) != null) {
+//                System.out.println(line);
+//            }
+//            bufferedReader.close();
+//        }
+//        catch(IOException e) {
+//            e.printStackTrace();
+//        }
 
 //        ------------------------------------------------------------
 //        example 30
+        ExecutorService service = Executors.newFixedThreadPool(5);
 
+        for(int i = 1 ; i <= 20 ; i++) {
+            final int count = i;
+
+            Runnable runnable = new Runnable() {
+                @Override
+                public void run() {
+                    System.out.println(count);
+                    try {
+                        Thread.sleep(2000);
+                    }
+                    catch(InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            };
+            service.submit(runnable);
+        }
+        service.shutdown();
     }
 }
