@@ -9,32 +9,32 @@ System.out.println("Hello World");
   * 判斷式
 ```js
 if(condition == true) { 
-    do something... 
+    do something... ;
 } 
 else if(condition == true) {
-    do something... 
+    do something... ;
 }
 else { 
-    do something... 
+    do something... ;
 }
 ```
 ```js
 switch(變數名稱或運算式) {
     case 常數1:
-        do somethind...;
+        do something... ;
         break;
     case 常數2:
-        do something...;
+        do something... ;
         break;
     default:
-        do something;
+        do something... ;
 }
 ```
 ***
 * example 3, 4
   * 迴圈
 ```js
-for(int start ; i < end ; i++) {
+for(int start = 0 ; start < end ; start++) {
      do something...;
 }
 ```
@@ -66,7 +66,7 @@ System.out.println(service.getNum());
 ```
 ***  
 * example 11
-  * 繼承(extends)、介面(implements)
+  * 繼承(extends)、介面(implements)、super
 ```js
 class Father {
     protected int num = 100;
@@ -100,8 +100,12 @@ abstract class CalculateService implements ICalculate {
 ```
 *** 
 * example 12
-  * 因為幅點數有精準度問題，一律使用 BigDecinal 來計算匯率或金額等
+  * 因為float、double有精準度問題(1-0.9)，一律使用 BigDecimal 來計算匯率或金額等
   * setScale(int newScale, RoundingMode roundingMode)
+```js
+public BigDecimal amount = new BigDecimal("1000");
+public BigDecimal amount = BigDecimal.valueOf(1000);
+```
 ```js
 public BigDecimal rate = BigDecimal.valueOf(30);
 public BigDecimal amount = BigDecimal.valueOf(1000);
@@ -165,15 +169,15 @@ while(it.hasNext()){
     System.out.println(it.next());
 }
 
-Colelctions.sort(lists, Colelction.reverseOrder());
+Colelctions.sort(lists, Collection.reverseOrder());
 ```
 ```js
 String[] data = {"apple", "banana", "cat", "cat", "banana", "dog"};
 List<String> lists = new ArrayList<String>(Arrays.asList(data));
 lists.forEach(list -> System.out.println(list));
-System.out.println("------------------------------------");
+
 Set<String> sets = new HashSet<String>(Arrays.asList(data));
-sets.forEach(s -> System.out.println(s));
+sets.forEach(set -> System.out.println(set));
 ```
 ```js
 Map<String, String> maps = new HashMap<String, String>();
@@ -205,16 +209,17 @@ List<String> lists = new ArrayList<String>(Arrays.asList(data.split(",| ")));
   * 自訂例外處理
 ```js
 try{
-    可能發生錯誤需要被監控的程式片段
-    使用throw new Exception()明確拋出例外
+    // 可能發生錯誤需要被監控的程式片段
+    // 使用throw new Exception()明確拋出例外
+    throw new Exception();
 }
 catch(Exception e){
-    處理特定例外的程式片段
+    // 處理特定例外的程式片段
     e.printStackTrace();
     System.out.println(e.getMessage());
 }
 finally {
-    成功或發生例外皆會執行的程式片段
+    // 成功或發生例外皆會執行的程式片段
 }
 ```
 ```js
