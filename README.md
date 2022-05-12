@@ -285,4 +285,94 @@ for(Currency currency : Currency.values()) {
     }
 }
 ```
+```js
+public enum Currency {
+    USD("01"), GBP("02"), HKD("03"), JPY("11"), EUR("21");
+    
+    private String currencyCode;
+    
+    Currency(String currencyCode) {
+        this.currencyCode = currencyCode;
+    }
+    
+    public String getCurrencyCode() {
+        return currencyCode;
+    }
+}
+
+for(Currency currency : Currency.values()) {
+    if(currencyCode.equals(currency.getCurrencyCode())){
+        System.out.println(currency + " Found!! ");
+    }
+    else{
+        System.out.println(currency + " Not found!! ");
+    }
+}
+```
+*** 
+* example 29
+  * File-IO
+```js
+File file = new File("fileName.txt");
+
+try {
+    BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(file, true));
+    bufferedWriter.write(data);
+    bufferedWriter.newLine();
+    bufferedWriter.close();
+}
+catch(IOException e) {
+    e.printStackTrace();
+}
+finally {
+    // close file
+}
+```
+```js
+File file = new File("fileName.txt");
+
+try {
+    BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+    String line = null;
+    while((line = bufferedReader.readLine()) != null) {
+        System.out.println(line);
+    }
+    bufferedReader.close();
+}
+catch(IOException e) {
+    e.printStackTrace();
+}
+finally {
+    // close file
+}
+```
+***
+* example 30
+  * 執行緒(Thread)、Thread-Pool
+  * Thread.Sleep(long millis)可以使目前的執行緒暫停執行一段時間(毫秒)
+  * Thread.join()可以讓目前正在執行的Thread暫停，直到呼叫join()的執行緒結束才會繼續執行
+```js
+// 產生固定 thread 數量的 Thread-Pool，如果啟動的數量超過 pool 就會放在 Queue 等待
+ExecutorService service = Executors.newFixedThreadPool(5);
+
+for(int i = 1 ; i <= 20 ; i++) { 
+    final int count = i;
+    
+    Runnable runnable = new Runnable() {
+        @Override
+        public void run() { 
+            System.out.println(count);
+            try { 
+                Thread.sleep(2000);
+            }
+            catch(InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    };
+    service.submit(runnable);
+}
+// 讓整個 Thread-Pool 的 threads 都停止
+service.shutdown();
+```
 *** 
