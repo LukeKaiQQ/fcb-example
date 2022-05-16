@@ -147,11 +147,11 @@ for(int score : scores) {
 ```js
 String s = "Hello";
 StringBuffer str = new StringBuffer(s);
-str.append(" World);
+str.append(" World");
 str.insert(2, "Test");
 str.delete(8, 11);
 str.deleteCharAt(1);
-str.replace(0, 7, "W);
+str.replace(0, 7, "W");
 ```
 ***
 * example 16, 17, 18, 19
@@ -349,7 +349,7 @@ finally {
 ***
 * example 30
   * 執行緒(Thread)、Thread-Pool
-  * Thread.Sleep(long millis)可以使目前的執行緒暫停執行一段時間(毫秒)
+  * Thread.leep(long millis)可以使目前的執行緒暫停執行一段時間(毫秒)
   * Thread.join()可以讓目前正在執行的Thread暫停，直到呼叫join()的執行緒結束才會繼續執行
 ```js
 // 產生固定 thread 數量的 Thread-Pool，如果啟動的數量超過 pool 就會放在 Queue 等待
