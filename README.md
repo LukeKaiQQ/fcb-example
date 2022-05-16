@@ -349,7 +349,7 @@ finally {
 ***
 * example 30
   * 執行緒(Thread)、Thread-Pool
-  * Thread.leep(long millis)可以使目前的執行緒暫停執行一段時間(毫秒)
+  * Thread.sleep(long millis)可以使目前的執行緒暫停執行一段時間(毫秒)
   * Thread.join()可以讓目前正在執行的Thread暫停，直到呼叫join()的執行緒結束才會繼續執行
 ```js
 // 產生固定 thread 數量的 Thread-Pool，如果啟動的數量超過 pool 就會放在 Queue 等待
