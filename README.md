@@ -90,7 +90,7 @@ public interface ICalculate {
 }
 abstract class CalculateService implements ICalculate {
     protected BigDecimal rate = BigDecimal.valueOf(30);
-    protected  BigDecimal amount = BigDecimal.valueOf(1000);
+    protected BigDecimal amount = BigDecimal.valueOf(1000);
     
     public void calculate() {
         System.out.println(this.rate.multiply(this.amount));
@@ -259,8 +259,8 @@ System.out.println(LocalDate.now());
 System.out.println(LocalTime.now());
 ```
 ```js
-var date = LocalDate.of(2022, 05, 11);
-var formatDate = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(date);
+LocalDate date = LocalDate.of(2022, 05, 11);
+String formatterDate = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(date);
 
 var time = LocalTime.of(14, 50, 40);
 var formatterTime1 = DateTimeFormatter.ofPattern("HH:mm:ss").format(time);
@@ -269,6 +269,8 @@ var formatterTime2 = DateTimeFormatter.ofPattern("hh:mm:ss").format(time);
 ***
 * example 28
   * 列舉(enum)
+  * public static E[] values() : 返回所有列舉實例 (回傳一個陣列)
+  * public final String name() : 取得列舉成員名稱字串 (回傳一個字串)
 ```js
 public enum Currency {
     USD, GBP, HKD, JPY, EUR,
@@ -276,12 +278,13 @@ public enum Currency {
 
 System.out.println(Currency.USD);
 
+// Currency.values() : 回傳一個 Currency 陣列
 for(Currency currency : Currency.values()) {
-    if(curr.equals(currency.name())){
+    if(currStr.equals(currency.name())) {
         System.out.println(currency);
     }
     else{
-        System.out.println("Not Found!!!");
+        System.out.println("Not Match!!!");
     }
 }
 ```
@@ -302,10 +305,12 @@ public enum Currency {
 
 for(Currency currency : Currency.values()) {
     if(currencyCode.equals(currency.getCurrencyCode())){
-        System.out.println(currency + " Found!! ");
+        System.out.println("CurrencyCode: " + currency.getCurrencyCode());
+        System.out.println("CurrencyName: " + currency.name());
+        System.out.println(currency + " Match!! ");
     }
     else{
-        System.out.println(currency + " Not found!! ");
+        System.out.println(currency + " Not Match!! ");
     }
 }
 ```
