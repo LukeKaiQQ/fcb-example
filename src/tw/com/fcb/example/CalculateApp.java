@@ -2,7 +2,6 @@ package  tw.com.fcb.example;
 
 import java.io.*;
 import java.math.BigDecimal;
-import java.nio.Buffer;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
@@ -401,7 +400,7 @@ public class CalculateApp{
 //        Scanner scanner = new Scanner(System.in);
 //        BigDecimal num1 = scanner.nextBigDecimal();
 //        BigDecimal num2 = scanner.nextBigDecimal();
-//
+
 //        try{
 //            Scanner scanner = new Scanner(System.in);
 //            BigDecimal num1 = scanner.nextBigDecimal();
@@ -419,6 +418,7 @@ public class CalculateApp{
 //            System.out.println("拋出例外 " + e);
 //        }
 //        catch (InputMismatchException e){
+//            e.printStackTrace();
 //            System.out.println("拋出例外 " + e);
 //        }
 //        catch(Exception e){
@@ -436,6 +436,7 @@ public class CalculateApp{
 //            checkIdService.CheckId("A123456789");
 //        }
 //        catch (MemberIdException e){
+//            e.printStackTrace();
 //            System.out.println(e.getMessage());
 //            e.show();
 //        }
@@ -447,7 +448,12 @@ public class CalculateApp{
 //        example 25
 //        Map<String, String> maps = new HashMap<String, String>();
 //        maps.put("a", "apple");
+//
 //        System.out.println(maps.get("b"));
+//        if(maps.get("b") == null){
+//            System.out.println("Not Found");
+//        }
+//
 //        System.out.println(Optional.ofNullable(maps.get("B")));
 //        System.out.println(Optional.ofNullable(maps.get("B")).orElse("Not Found"));
 //
@@ -501,12 +507,12 @@ public class CalculateApp{
 //        System.out.println(LocalTime.now());
 //        System.out.println("-------------------------------------------");
 //
-//        var date = LocalDate.of(2022, 05, 11);
-//        var formatterDate = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(date);
+//        LocalDate date = LocalDate.of(2022, 5, 18);
+//        String formatterDate = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(date);
 //        System.out.println(date);
 //        System.out.println(formatterDate);
 //
-//        var time = LocalTime.of(14, 50, 40);
+//        var time = LocalTime.of(13, 50, 40);
 //        var formatterTime1 =  DateTimeFormatter.ofPattern("HH:mm:ss").format(time);
 //        var formatterTime2 =  DateTimeFormatter.ofPattern("hh:mm:ss").format(time);
 //        System.out.println(time);
@@ -524,30 +530,55 @@ public class CalculateApp{
 //        ------------------------------------------------------------
 //        example 28
 //        System.out.println(Currency.USD);
-//
+//        System.out.println(Currency.valueOf("USD"));
+//        Currency[] currencies = Currency.values();
+//        for(int i = 0 ; i < currencies.length ; i++) {
+//            System.out.println(currencies[i]);
+//        }
+//        System.out.println("-------------------------------------------");
+
 //        Scanner scanner = new Scanner(System.in);
-//        System.out.print("Enter the currency: ");
+//        System.out.print("Enter The Currency: ");
 //        String currStr = scanner.next();
 //        for(Currency currency : Currency.values()) {
+//            System.out.println("Currency: " + currency);
 //            if(currStr.equals(currency.name())){
 //                System.out.println(currency);
 //            }
 //            else{
-//                System.out.println(currency + " Not Exist");
+//                System.out.println(currency + " Not Match");
 //            }
+//            System.out.println();
 //        }
 
 //        Scanner scanner = new Scanner(System.in);
-//        System.out.print("Enter the currency: ");
+//        System.out.print("Enter The Currency: ");
 //        String currencyCode = scanner.next();
 //        for(Currency currency : Currency.values()){
 //            System.out.println(currency + " : " + currency.getCurrencyCode());
 //            if(currencyCode.equals(currency.getCurrencyCode())){
-//                System.out.println(currency + " Found!! ");
+//                System.out.println("CurrencyCode: " + currency.getCurrencyCode());
+//                System.out.println("CurrencyName: " + currency.name());
+//                System.out.println(currency + " Match!! ");
 //            }
 //            else{
-//                System.out.println(currency + " Not found!! ");
+//                System.out.println(currency + " Not Match!! ");
 //            }
+//            System.out.println();
+//        }
+
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter The Currency: ");
+//        String currStr = scanner.next();
+//        for(Currency currency : Currency.values()){
+//            System.out.println(currency + " : " + currency.getCurrencyCode() + " : " + currency.getCurrencyName());
+//            if(currStr.equals(currency.getCurrencyCode()) || currStr.equals(currency.name())){
+//                System.out.println(currency + " Match!! ");
+//            }
+//            else{
+//                System.out.println(currency + " Not Match!! ");
+//            }
+//            System.out.println();
 //        }
 
 //        ------------------------------------------------------------
@@ -596,25 +627,25 @@ public class CalculateApp{
 
 //        ------------------------------------------------------------
 //        example 30
-        ExecutorService service = Executors.newFixedThreadPool(5);
-
-        for(int i = 1 ; i <= 20 ; i++) {
-            final int count = i;
-
-            Runnable runnable = new Runnable() {
-                @Override
-                public void run() {
-                    System.out.println(count);
-                    try {
-                        Thread.sleep(2000);
-                    }
-                    catch(InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            };
-            service.submit(runnable);
-        }
-        service.shutdown();
+//        ExecutorService service = Executors.newFixedThreadPool(5);
+//
+//        for(int i = 1 ; i <= 20 ; i++) {
+//            final int count = i;
+//
+//            Runnable runnable = new Runnable() {
+//                @Override
+//                public void run() {
+//                    System.out.println(count);
+//                    try {
+//                        Thread.sleep(2000);
+//                    }
+//                    catch(InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            };
+//            service.submit(runnable);
+//        }
+//        service.shutdown();
     }
 }
