@@ -259,12 +259,30 @@ System.out.println(LocalDate.now());
 System.out.println(LocalTime.now());
 ```
 ```js
-LocalDate date = LocalDate.of(2022, 05, 11);
+LocalDate date = LocalDate.of(2022, 05, 20);
 String formatterDate = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(date);
 
 var time = LocalTime.of(14, 50, 40);
 var formatterTime1 = DateTimeFormatter.ofPattern("HH:mm:ss").format(time);
 var formatterTime2 = DateTimeFormatter.ofPattern("hh:mm:ss").format(time);
+```
+```js
+LocalDate date1 = LocalDate.of(2022, 5, 20);
+LocalDate date2 = LocalDate.of(2023, 5, 20);
+System.out.println(date1.getYear() + "/" + date1.getMonthValue() + "/" + date1.getDayOfMonth());
+System.out.println(date1.isLeapYear());
+
+// 2022-05-21
+LocalDate tomorrow = date1.plusDays(1);
+System.out.println(tomorrow);
+
+// P1Y
+var period1 = Period.between(date1, date2);
+System.out.println(period1);
+
+// 365
+long period2 = ChronoUnit.DAYS.between(date1, date2);
+System.out.println(period2);
 ```
 ***
 * example 28
@@ -279,6 +297,7 @@ public enum Currency {
 System.out.println(Currency.USD);
 
 // Currency.values() : 回傳一個 Currency 陣列
+// Currency[] currency = Currency.values();
 for(Currency currency : Currency.values()) {
     if(currStr.equals(currency.name())) {
         System.out.println(currency);
