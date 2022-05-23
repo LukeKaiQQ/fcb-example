@@ -5,7 +5,9 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.*;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -527,12 +529,29 @@ public class CalculateApp{
 //        System.out.println(formatTime);
 //        System.out.println("-------------------------------------------");
 
+        LocalDate date1 = LocalDate.of(2022, 5, 20);
+        LocalDate date2 = LocalDate.of(2023, 5, 20);
+        System.out.println(date1.getYear() + "/" + date1.getMonthValue() + "/" + date1.getDayOfMonth());
+        System.out.println(date1.isLeapYear());
+        System.out.println("-------------------------------------------");
+        LocalDate tomorrow = date1.plusDays(1);
+        System.out.println(tomorrow);
+        var period1 = Period.between(date1, date2);
+        System.out.println(period1);
+        System.out.println("-------------------------------------------");
+        long period2 = ChronoUnit.DAYS.between(date1, date2);
+        System.out.println(period2);
+
 //        ------------------------------------------------------------
 //        example 28
 //        System.out.println(Currency.USD);
 //        System.out.println(Currency.valueOf("USD"));
 //        Currency[] currencies = Currency.values();
 //        for(int i = 0 ; i < currencies.length ; i++) {
+//            var currency1 = currencies[i];
+//            var currency2 = currencies[i].name();
+//            System.out.println("Currency1: " + currency1);
+//            System.out.println("Currency2: " + currency2);
 //            System.out.println(currencies[i]);
 //        }
 //        System.out.println("-------------------------------------------");
@@ -551,22 +570,24 @@ public class CalculateApp{
 //            System.out.println();
 //        }
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter The Currency: ");
-        String currencyCode = scanner.next();
-        for(Currency currency : Currency.values()){
-            System.out.println(currency + " : " + currency.getCurrencyCode());
-            if(currencyCode.equals(currency.getCurrencyCode())){
-                System.out.println("CurrencyCode: " + currency.getCurrencyCode());
-                System.out.println("CurrencyName: " + currency.name());
-                System.out.println(currency + " Match!! ");
-            }
-            else{
-                System.out.println(currency + " Not Match!! ");
-            }
-            System.out.println();
-        }
+//        Scanner scanner = new Scanner(System.in);
+//        System.out.print("Enter The Currency: ");
+//        String currencyCode = scanner.next();
+//        for(Currency currency : Currency.values()){
+//            System.out.println(currency + " : " + currency.getCurrencyCode());
+//            if(currencyCode.equals(currency.getCurrencyCode())){
+//                System.out.println("CurrencyCode: " + currency.getCurrencyCode());
+//                System.out.println("CurrencyName: " + currency.name());
+//                System.out.println(currency + " Match!! ");
+//            }
+//            else{
+//                System.out.println(currency + " Not Match!! ");
+//            }
+//            System.out.println();
+//        }
 
+//        System.out.println(Currency.USD.getCurrencyCode());
+//        System.out.println(Currency.USD.getCurrencyName());
 //        Scanner scanner = new Scanner(System.in);
 //        System.out.print("Enter The Currency: ");
 //        String currStr = scanner.next();
