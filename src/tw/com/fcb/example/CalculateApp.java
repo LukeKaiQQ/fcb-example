@@ -534,6 +534,7 @@ public class CalculateApp{
         System.out.println(date3);
         System.out.println(date1.isLeapYear());
         System.out.println("-------------------------------------------");
+
         LocalDate tomorrow = date1.plusDays(1);
         LocalDate nextMonth = date1.plusMonths(1);
         System.out.println("Tomorrow: " + tomorrow);
@@ -541,6 +542,7 @@ public class CalculateApp{
         var period1 = Period.between(date1, date2);
         System.out.println(period1);
         System.out.println("-------------------------------------------");
+
         long period2 = ChronoUnit.DAYS.between(date1, date2);
         System.out.println(period2);
 
