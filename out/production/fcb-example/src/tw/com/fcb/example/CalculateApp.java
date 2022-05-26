@@ -529,12 +529,14 @@ public class CalculateApp{
 //        System.out.println(formatTime);
 //        System.out.println("-------------------------------------------");
 
-        LocalDate date1 = LocalDate.of(2022, 5, 20);
-        LocalDate date2 = LocalDate.of(2023, 5, 20);
+        LocalDate date1 = LocalDate.of(2022, 2, 28);
+        var date2 = LocalDate.of(2023, 4, 20);
+        var date3 = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(date1);
         System.out.println(date1.getYear() + "/" + date1.getMonthValue() + "/" + date1.getDayOfMonth());
         System.out.println(date1.isLeapYear());
         System.out.println("-------------------------------------------");
-        LocalDate tomorrow = date1.plusDays(1);
+//        LocalDate tomorrow = date1.plusDays(1);
+        LocalDate tomorrow = date1.plusMonths(1);
         System.out.println(tomorrow);
         var period1 = Period.between(date1, date2);
         System.out.println(period1);
