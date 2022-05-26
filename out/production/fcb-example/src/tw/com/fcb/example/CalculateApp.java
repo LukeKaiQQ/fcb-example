@@ -537,8 +537,8 @@ public class CalculateApp{
         System.out.println("-------------------------------------------");
         LocalDate tomorrow = date1.plusDays(1);
         LocalDate nextMonth = date1.plusMonths(1);
-        System.out.println(tomorrow);
-        System.out.println(nextMonth);
+        System.out.println("Tomorrow: " + tomorrow);
+        System.out.println("Next Month: " + nextMonth);
         var period1 = Period.between(date1, date2);
         System.out.println(period1);
         System.out.println("-------------------------------------------");
