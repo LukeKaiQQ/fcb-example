@@ -533,6 +533,7 @@ public class CalculateApp{
         var date2 = LocalDate.of(2023, 5, 20);
         var date3 = DateTimeFormatter.ofPattern("yyyy/MM/dd").format(date1);
         System.out.println(date1.getYear() + "/" + date1.getMonthValue() + "/" + date1.getDayOfMonth());
+        System.out.println(date3);
         System.out.println(date1.isLeapYear());
         System.out.println("-------------------------------------------");
         LocalDate tomorrow = date1.plusDays(1);
